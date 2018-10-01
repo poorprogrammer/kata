@@ -1,4 +1,4 @@
-package converter
+package kata
 
 func roman(n int) string {
 
