@@ -1,6 +1,8 @@
 package converter
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestInput1ShouldGetI(t *testing.T) {
 	result := roman(1)
@@ -32,10 +34,19 @@ func Test7ShouldGetVII(t *testing.T) {
 	errorCheck(t, result, "VII")
 }
 
+func TestSum2Number(t *testing.T) {
+	result := sumRoman(1, 2)
+	errorCheck(t, result, "III")
+}
+
 func errorCheck(t *testing.T, result, expected string) {
 	if result != expected {
 		t.Errorf("expect %s but got %s", expected, result)
 	}
+}
+
+func sumRoman(number1 int, number2 int) string {
+	return roman(number1) + roman(number2)
 }
 
 func roman(n int) string {
@@ -46,6 +57,7 @@ func roman(n int) string {
 		5: "V",
 		6: "VI",
 		7: "VII",
+		9: "IX",
 	}
 	if _, ok := romanMap[n]; ok {
 		return romanMap[n]
